@@ -1,0 +1,26 @@
+.tabs-header {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+    padding : 0 0 2.5rem 0.1rem;
+    width: 100%;
+    color: #cccccc;
+    border-bottom: 1px solid #373733;
+  }
+
+.tabs-header li {
+    float: left;
+    list-style-type: none;
+    padding: 0.5rem 2rem;
+    opacity: 0.5;
+  }
+
+.tabs-header li.active {
+    border-bottom: 2px solid #1E90FF;
+    opacity: 1;
+  }
+  
+.tab-content {
+    padding: 2rem 0 1rem 0;
+}
