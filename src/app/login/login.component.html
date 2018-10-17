@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<section class="login-layout">
+  <aside class="title"> Login </aside>
+    <section>
+       <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="verifyUser()" class="form-group">
+         <div class="form-control">
+           <input type="text" name="username" placeholder="Username" maxlength="20" class="input-form" formControlName="userName">  
+         </div>
+         <div class="form-control">
+            <input type="password" name="password" placeholder="Password" maxlength="20" class="input-form" formControlName="password">  
+          </div>
+          <div class="btn-group">
+              <button type="reset" class="btn btn-default" (click)="loginForm.reset()">Reset</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+          </div>
+        </form>
+    </section>
+</section>
