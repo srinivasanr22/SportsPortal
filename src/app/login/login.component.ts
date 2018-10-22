@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup,
+         FormControl,
+         Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ SharedService ]
 })
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private sharedService: SharedService) { }
 
   ngOnInit() {
     this.initializeFormGroup();
@@ -36,8 +41,19 @@ export class LoginComponent implements OnInit {
    * to validate the login credentials.
    */
   verifyUser() {
-    console.log(this.loginForm.value);
-    this.router.navigateByUrl('dashboard');
+    let isDataFound = "";
+    this.sharedService.fetchData('authentication.json').subscribe( response => {
+       console.log(response);
+       isDataFound = response.filter(function(data){
+           return this.loginForm.value.userName === data.userName && this.loginForm.value.password === data.password;
+       });
+       // if found redirect to dashboard page
+        if(isDataFound.length > 0) {
+          this.router.navigateByUrl('dashboard');
+        } else {
+          alert("Enter correct username password.");
+        }
+    });  
   }
 
 }

@@ -1,3 +1,72 @@
-<p>
-  dashboard works!
-</p>
+<section class="data-container">
+  <!-- player details with tab / tree component - start -->
+  <section class="content">
+    <app-tabs class="margin-3rem">
+       <app-tab title="Country">
+           India
+           Aus
+       </app-tab>
+       <app-tab title="Player role">
+          Batsman
+          Bowler
+      </app-tab>
+    </app-tabs>
+  </section>
+  <!-- player details with tab / tree component - end -->
+
+  <!-- player Image - start -->
+  <section class="content">
+      <figure class="player-image">
+            
+      </figure>
+  </section>
+  <!-- player Image - start -->
+
+  <!-- Read only player-detail-->
+  <section class="content" *ngIf="!addPlayer">
+      <form class="form-layout">
+            <legend> View Player Details </legend>
+            <div class="margin-top-3rem">
+                <p>
+                    <span>Name : </span>
+                    <label> Dhoni </label>
+                  </p>
+                  <p>
+                      <label>Country : </label>
+                      <span>India</span>
+                  </p>
+                  <p>
+                      <label>Player Role : </label>
+                      <span>Wicket Keeper</span>
+                  </p>
+            </div>
+            <!-- Add new Player button will show only - if user login with admin -->
+            <button type="button" class="btn btn-primary add-new-btn" (click)="togglePlayer(true)">Add New Player</button>
+        </form>
+ </section>
+  <!-- read only player-detail-->
+
+  <!-- Add new player - start-->
+  <section class="content" *ngIf="addPlayer">
+        <section class="player-layout">
+            <legend class="margin-top-2rem"> Add New Player </legend>
+           <form autocomplete="off" [formGroup]="playerForm" (ngSubmit)="addPlayer()" class="form-group">
+             <div class="form-control">
+               <input type="text" name="playerName" placeholder="PlayerName" maxlength="20" class="input-form" formControlName="playerName">  
+             </div>
+             <div class="form-control">
+                <input type="text" name="playerCountry" placeholder="PlayerCountry" maxlength="20" class="input-form" formControlName="playerCountry">  
+              </div>
+              <div class="form-control">
+                  <input type="text" name="playerRole" placeholder="PlayerRole" maxlength="20" class="input-form" formControlName="playerRole">  
+                </div>
+              <div class="btn-group">
+                  <button type="reset" class="btn btn-default" (click)="togglePlayer(false)">Cancel</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!playerForm.valid">submit</button>
+              </div>
+            </form>
+        </section>
+    </section>
+  <!-- Add new player - end-->
+
+</section>

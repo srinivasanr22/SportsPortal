@@ -1,0 +1,55 @@
+.data-container {
+    display: flex;
+    background-color: #fff;
+    margin-top: 5rem;
+}
+
+.content {
+    display: flex;
+    flex:1;
+    background: red;
+    width: 33%;
+    padding: 0.5rem;
+    margin: 1rem;
+    box-sizing: border-box;
+}
+
+.player-image {
+    border: 2px solid #c3c3c3c3;
+    width: 75%;
+    height: 20rem;
+    margin: 3.6rem 0rem 2rem 4rem; 
+}
+
+.form-layout {
+    padding: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.20rem;
+}
+
+.form-layout legend, .player-layout legend {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form-layout p {
+    margin: 2rem 0rem 3rem 3rem;
+}
+
+.add-new-btn {
+    margin:2rem 0rem 0rem 20rem;
+}
+
+.margin-top-3rem {
+    margin-top:3rem;
+}
+
+.margin-top-2rem {
+    margin-top: 2rem;
+}
+
+.player-layout {
+    margin: 0 auto;
+    width: 100%;
+}

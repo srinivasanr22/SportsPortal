@@ -1,0 +1,17 @@
+{
+    "authenticatedUsers": [
+        {
+            "userName": "admin",
+            "password": "admin@123",
+            "role" : "1",
+            "__comment__": "This role will have full access to the app."
+        },
+        {
+            "userName": "manager",
+            "password": "manager@123",
+            "role" : "2",
+            "__comment__": "This role will have only read-only access to the app."
+        }
+    ]
+
+}

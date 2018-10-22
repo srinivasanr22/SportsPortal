@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 // route  configuration
 const routes : Routes = [ 
-    { path : 'login' , component : LoginComponent },
+    { path : 'login' , component: LoginComponent },
     { path : 'dashboard', component: DashboardComponent },
     { path: '**', redirectTo: 'login' }
 ];

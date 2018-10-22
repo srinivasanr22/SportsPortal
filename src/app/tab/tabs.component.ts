@@ -23,6 +23,7 @@ export class TabsComponent implements AfterContentInit {
    * Sets first tab as active by default.
    */
   ngAfterContentInit() {
+    console.log(this.tabs);
     this.tabs.first.active = true;
   }
 

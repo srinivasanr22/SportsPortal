@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 //form module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRouteModule
+    AppRouteModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

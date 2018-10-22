@@ -1,5 +1,5 @@
 
-.login-layout {
+.form-detail-layout {
     width: 45%;
     height: 6rem;
     /*background: #2196F3;*/
@@ -51,71 +51,3 @@
     outline: none;
 }
 
-.btn-group {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 1rem;
-    margin-left: 10rem;
-    margin-top: 1rem;
-    grid-gap: 2rem;
-}
-
-.btn-default {
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #2196F3;
-    border-color: #2e6da4;
-}
-
-.btn-default:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #8c8c8c;
-}
-
-.btn {
-    display: inline-grid;
-    padding: 1rem;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.428571;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 2px;
-}
-
-.button-class {
-    padding: 11px;
-    width: 10%;
-    background: #ccc;
-    border: 1px solid red;
-    margin-left: 1rem;
-    margin-top: 1.1rem;
-    display: flex;
-    flex: 1;
-    cursor: pointer;
-}
-
-.btn[disabled], fieldset[disabled] .btn {
-    cursor: not-allowed;
-    filter: alpha(opacity=65);
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    opacity: .65;
-}
