@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //form module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { AppRouteModule } from './app-routing.module';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tab/tabs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TreeComponent } from './tree/tree.component';
 
 
 @NgModule({
@@ -20,14 +21,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     TabComponent,
     TabsComponent,
-    DashboardComponent
+    DashboardComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRouteModule,
-    HttpModule
+    HttpClientModule
+  ],
+  entryComponents: [
+    TreeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

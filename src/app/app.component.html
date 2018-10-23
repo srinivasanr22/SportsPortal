@@ -1,9 +1,11 @@
 <div class="container">
     <header class="layout-header">
        <aside class="title"> Sports Portal </aside>
+       <aside class="logout" *ngIf="userName" (click)="logout()">
+            Logout
+        </aside>
     </header>
- 
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="setUserName()"></router-outlet>
 
 </div>
 

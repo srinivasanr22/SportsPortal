@@ -1,14 +1,13 @@
+<h1 class="heading"> Welcome {{userName | uppercase }} ! </h1>
 <section class="data-container">
   <!-- player details with tab / tree component - start -->
   <section class="content">
     <app-tabs class="margin-3rem">
        <app-tab title="Country">
-           India
-           Aus
+           <app-tree [playerList] = 'allCountryPlayerList' (selectedPlayer)="updateList($event)"></app-tree>
        </app-tab>
        <app-tab title="Player role">
-          Batsman
-          Bowler
+          <app-tree [playerList] = 'categorizedUnderRole'></app-tree>
       </app-tab>
     </app-tabs>
   </section>
@@ -17,7 +16,7 @@
   <!-- player Image - start -->
   <section class="content">
       <figure class="player-image">
-            
+            <img [src]=selectedPlayer.imgSrc class="img-class">
       </figure>
   </section>
   <!-- player Image - start -->
@@ -25,23 +24,23 @@
   <!-- Read only player-detail-->
   <section class="content" *ngIf="!addPlayer">
       <form class="form-layout">
-            <legend> View Player Details </legend>
-            <div class="margin-top-3rem">
+            <legend> View Player Details <span class="text-color"> (click on player name to view details)</span></legend>
+            <div class="margin-top-3rem readonly-content">
                 <p>
-                    <span>Name : </span>
-                    <label> Dhoni </label>
+                    <label>Name : </label>
+                    <span> {{selectedPlayer.name}} </span>
                   </p>
                   <p>
                       <label>Country : </label>
-                      <span>India</span>
+                      <span>{{selectedPlayer.country}}</span>
                   </p>
                   <p>
                       <label>Player Role : </label>
-                      <span>Wicket Keeper</span>
+                      <span> {{selectedPlayer.role}} </span>
                   </p>
             </div>
             <!-- Add new Player button will show only - if user login with admin -->
-            <button type="button" class="btn btn-primary add-new-btn" (click)="togglePlayer(true)">Add New Player</button>
+            <button type="button" *ngIf="userRole == 1" class="btn btn-primary add-new-btn" (click)="togglePlayer(true)">Add New Player</button>
         </form>
  </section>
   <!-- read only player-detail-->

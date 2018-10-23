@@ -18,3 +18,10 @@
     margin-top: 1.2rem;
 }
 
+.logout {
+    float: left;
+    color: #fff;
+    margin-left: 100rem;
+    cursor: pointer;
+}
+

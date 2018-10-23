@@ -1,0 +1,28 @@
+
+ul.orderList{
+    padding-left: 3rem;
+    color: #337ab7;
+    padding-bottom: 2rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+}
+
+ul.subOrderList {
+    padding: 1rem 1rem;
+    color: #337ab7;
+    padding-bottom: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+
+ul.orderList li, ul.subOrderList li{
+    background: url(https://png.icons8.com/windows/1600/long-arrow-right.png) -2px 12px no-repeat;
+    background-size: 1rem;
+    margin: 0;
+    line-height: 3rem;
+    border-left: 1px solid;
+    padding-left: 1.5rem;
+    list-style: none;
+    color: #337ab7;
+    cursor: pointer;
+}

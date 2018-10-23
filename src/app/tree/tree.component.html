@@ -1,0 +1,10 @@
+<ul class="orderList" *ngIf="playerList">
+    <li *ngFor="let countryList of playerList.country">
+       <div>{{countryList.name}}</div>
+       <ul class="subOrderList">
+          <li *ngFor="let row of countryList.playerDetails">
+              <div (click)="selectedData(row, countryList.name);">{{row.name}}</div>
+            </li>
+       </ul>
+    </li>
+</ul>

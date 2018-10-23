@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,
-         FormControl,
-         Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared/shared.service';
 
@@ -14,6 +12,10 @@ import { SharedService } from '../shared/shared.service';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+
+  public showMsg: boolean;
+
+  public userName = localStorage.getItem('userName');
 
   constructor(private router: Router,
               private sharedService: SharedService) { }
@@ -41,17 +43,25 @@ export class LoginComponent implements OnInit {
    * to validate the login credentials.
    */
   verifyUser() {
-    let isDataFound = "";
+    let isDataFound = [];
+    let logginedData = this.loginForm.value;
     this.sharedService.fetchData('authentication.json').subscribe( response => {
-       console.log(response);
-       isDataFound = response.filter(function(data){
-           return this.loginForm.value.userName === data.userName && this.loginForm.value.password === data.password;
-       });
+       isDataFound = response.authenticatedUsers.filter( data =>
+        logginedData.userName === data.userName && logginedData.password === data.password
+       );
        // if found redirect to dashboard page
         if(isDataFound.length > 0) {
+          localStorage.setItem("userName", isDataFound[0].userName);
+          localStorage.setItem("userRole", isDataFound[0].role);
           this.router.navigateByUrl('dashboard');
         } else {
-          alert("Enter correct username password.");
+          // show error msg.
+          localStorage.setItem("userName", '');
+          localStorage.setItem("userRole", '');
+          this.showMsg = true;
+          let msg = document.getElementById("toastMsg");
+          msg.className = "show";
+          setTimeout(() => (msg.className = msg.className.replace("show", "")), 5000);
         }
     });  
   }
