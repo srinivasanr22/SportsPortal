@@ -14,6 +14,10 @@ import { TabsComponent } from './tab/tabs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TreeComponent } from './tree/tree.component';
 
+//third party
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { GroupByPipe } from './group-by.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { TreeComponent } from './tree/tree.component';
     TabComponent,
     TabsComponent,
     DashboardComponent,
-    TreeComponent
+    TreeComponent,
+    GroupByPipe
   ],
   imports: [
     BrowserModule,

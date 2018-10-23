@@ -4,10 +4,10 @@
   <section class="content">
     <app-tabs class="margin-3rem">
        <app-tab title="Country">
-           <app-tree [playerList] = "allCountryPlayerList$ | async" (selectedPlayer)="updateList($event)"></app-tree>
+           <app-tree [playerList] = "allCountryPlayerList | groupBy : 'country'" (selectedPlayer)="updateList($event)"></app-tree>
        </app-tab>
        <app-tab title="Player role">
-          <app-tree [playerList] = 'categorizedUnderRole$ | async'></app-tree>
+          <app-tree [playerList] = "allCountryPlayerList | groupBy : 'role'" (selectedPlayer)="updateList($event)"></app-tree>
       </app-tab>
     </app-tabs>
   </section>
@@ -25,22 +25,26 @@
   <section class="content" *ngIf="!addPlayer">
       <form class="form-layout">
             <legend> View Player Details <span class="text-color"> (click on player name to view details)</span></legend>
-            <div class="margin-top-3rem readonly-content">
-                <p>
-                    <label>Name : </label>
-                    <span> {{selectedPlayer.name}} </span>
-                  </p>
-                  <p>
-                      <label>Country : </label>
-                      <span>{{selectedPlayer.country}}</span>
-                  </p>
-                  <p>
-                      <label>Player Role : </label>
-                      <span> {{selectedPlayer.role}} </span>
-                  </p>
+            <div class="margin-top-3rem margin-bottom-3rem">
+                <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Country</th> 
+                      <th>Player Role</th>
+                    </tr>
+                    <tr>
+                      <td>{{selectedPlayer.name}}</td>
+                      <td>{{selectedPlayer.country}}</td>
+                      <td>{{selectedPlayer.role}}</td>
+                    </tr>
+                  </table>
             </div>
             <!-- Add new Player button will show only - if user login with admin -->
-            <button type="button" *ngIf="userRole == 1" class="btn btn-primary add-new-btn" (click)="togglePlayer(true)">Add New Player</button>
+            <span *ngIf="userRole == 1">
+                <button type="button" class="btn" *ngIf="selectedPlayer.name" (click)="editPlayer()"> Update Player </button>
+                <button type="button" class="btn"  *ngIf="selectedPlayer.name" (click)="deletePlayer()"> Delete Player </button>
+                <button type="button" class="btn btn-primary" style="height: 45px;" (click)="togglePlayer(true)"> Add New Player </button>
+            </span>
         </form>
  </section>
   <!-- read only player-detail-->
@@ -48,8 +52,8 @@
   <!-- Add new player - start-->
   <section class="content" *ngIf="addPlayer">
         <section class="player-layout">
-            <legend class="margin-top-2rem"> Add New Player </legend>
-           <form autocomplete="off" [formGroup]="playerForm" (ngSubmit)="addNewPlayer()" class="form-group">
+            <legend class="margin-top-2rem"> {{formTitle}} </legend>
+           <form autocomplete="off" [formGroup]="playerForm" (ngSubmit)="addNewPlayer($event, formTitle)" class="form-group">
              <div class="form-control">
                <input type="text" name="playerName" placeholder="PlayerName" maxlength="20" class="input-form" formControlName="name">  
              </div>
@@ -70,5 +74,6 @@
         </section>
     </section>
   <!-- Add new player - end-->
-
+  <!--msg-->
+  <div id="toastMsg">{{displayMsg}}</div>
 </section>
