@@ -1,0 +1,78 @@
+{
+    "country" : [{
+        "name":"Batsman",
+        "playerDetails": [
+          {
+            "name" : "Kohli",
+            "imgSrc" : "",
+            "role" : "Batsman"
+          },
+          {
+            "name" : "Ganguly",
+            "imgSrc" : "",
+            "role" : "Batsman"
+          },
+          {
+            "name" : "ABD",
+            "imgSrc" : "",
+            "role" : "Batsman"
+          },
+          {
+            "name" : "Fa Du",
+            "imgSrc" : "",
+            "role" : "Batsman"
+          }
+        ]
+    },
+    {
+      "name": "Bowler",
+      "playerDetails":[
+        {
+            "name" : "Donald",
+            "imgSrc" : "",
+            "role" : "Bowler"
+        },
+        {
+            "name" : "Zaheer",
+            "imgSrc" : "",
+            "role" : "Bowler"
+        }
+      ]
+    },
+    {
+        "name":"wicketKeeper",
+        "playerDetails": [
+          {
+            "name" : "Miller",
+            "imgSrc" : "",
+            "role" : "AllRounder"
+          },
+          {
+            "name" : "Dhoni",
+            "imgSrc" : "",
+            "role" : "wicketKeeper"
+          },
+          {
+            "name" : "Butler",
+            "imgSrc" : "",
+            "role" : "wicketKeeper"
+          }
+        ]
+    },
+    {
+        "name":"AllRounder",
+        "playerDetails": [
+          {
+            "name" : "Miller",
+            "imgSrc" : "",
+            "role" : "AllRounder"
+          },
+          {
+            "name" : "Yuvaraj",
+            "imgSrc" : "",
+            "role" : "AllRounder"
+          }
+        ]
+    }
+   ]
+}

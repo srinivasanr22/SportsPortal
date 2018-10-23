@@ -4,10 +4,10 @@
   <section class="content">
     <app-tabs class="margin-3rem">
        <app-tab title="Country">
-           <app-tree [playerList] = 'allCountryPlayerList' (selectedPlayer)="updateList($event)"></app-tree>
+           <app-tree [playerList] = "allCountryPlayerList$ | async" (selectedPlayer)="updateList($event)"></app-tree>
        </app-tab>
        <app-tab title="Player role">
-          <app-tree [playerList] = 'categorizedUnderRole'></app-tree>
+          <app-tree [playerList] = 'categorizedUnderRole$ | async'></app-tree>
       </app-tab>
     </app-tabs>
   </section>
@@ -49,16 +49,19 @@
   <section class="content" *ngIf="addPlayer">
         <section class="player-layout">
             <legend class="margin-top-2rem"> Add New Player </legend>
-           <form autocomplete="off" [formGroup]="playerForm" (ngSubmit)="addPlayer()" class="form-group">
+           <form autocomplete="off" [formGroup]="playerForm" (ngSubmit)="addNewPlayer()" class="form-group">
              <div class="form-control">
-               <input type="text" name="playerName" placeholder="PlayerName" maxlength="20" class="input-form" formControlName="playerName">  
+               <input type="text" name="playerName" placeholder="PlayerName" maxlength="20" class="input-form" formControlName="name">  
              </div>
              <div class="form-control">
-                <input type="text" name="playerCountry" placeholder="PlayerCountry" maxlength="20" class="input-form" formControlName="playerCountry">  
+                <input type="text" name="playerCountry" placeholder="PlayerCountry" maxlength="20" class="input-form" formControlName="country">  
               </div>
               <div class="form-control">
-                  <input type="text" name="playerRole" placeholder="PlayerRole" maxlength="20" class="input-form" formControlName="playerRole">  
+                  <input type="text" name="playerRole" placeholder="PlayerRole" maxlength="20" class="input-form" formControlName="role">  
                 </div>
+                <div class="form-control">
+                    <input type="text" name="imgUrl" placeholder="imgUrl" maxlength="200" class="input-form" formControlName="imgSrc">  
+                  </div>
               <div class="btn-group">
                   <button type="reset" class="btn btn-default" (click)="togglePlayer(false)">Cancel</button>
                   <button type="submit" class="btn btn-primary" [disabled]="!playerForm.valid">submit</button>

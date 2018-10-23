@@ -18,9 +18,9 @@ export class DashboardComponent implements OnInit {
   public selectedPlayer = {"name":'', "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvP5FbZKDEArvNIEZHFCvHshQ5rKVt0vBbUgXzD9D_VUtQ-or",
    "country":'', "role":''};
 
-  public allCountryPlayerList: Array<object>;
+  public allCountryPlayerList$: Array<object>;
 
-  public categorizedUnderRole : Array<Object>;
+  public categorizedUnderRole$ : Array<Object>;
 
   public userName: string;
 
@@ -31,14 +31,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.sharedService.fetchData('playerList_country.json').subscribe( res => {
-      this.allCountryPlayerList = res;
-    });
     
-    this.sharedService.fetchData('playerList_role.json').subscribe( res => {
-      this.categorizedUnderRole = res;
-    });
+    // create Async
+    this.allCountryPlayerList$ = this.sharedService.fetchData('playerList_country.json');
+    this.categorizedUnderRole$ = this.sharedService.fetchData('playerList_role.json');
    
     this.userName = localStorage.getItem("userName");
     this.userRole = localStorage.getItem("userRole");
@@ -56,13 +52,16 @@ export class DashboardComponent implements OnInit {
    */
   initializeFormGroup() {
     this.playerForm = new FormGroup({
-        playerName : new FormControl( '', {
+        name : new FormControl( '', {
           validators : Validators.required,
         }),
-        playerCountry : new FormControl('', {
+        country : new FormControl('', {
           validators:Validators.required,
         }),
-        playerRole : new FormControl('', {
+        role : new FormControl('', {
+          validators:Validators.required,
+        }),
+        imgSrc: new FormControl('', {
           validators:Validators.required,
         })
       });
@@ -70,6 +69,11 @@ export class DashboardComponent implements OnInit {
 
   updateList(data) {
     this.selectedPlayer = data;
+  }
+
+  addNewPlayer() {
+    console.log(this.playerForm.value);
+    this.allCountryPlayerList$.push(this.playerForm.value);
   }
 
 }
