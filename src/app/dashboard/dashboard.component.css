@@ -41,6 +41,10 @@
     text-align: center;
 }
 
+.input-form {
+   color: #337ab7 !important;
+}
+
 .form-layout p {
     margin: 2rem 0rem 3rem 3rem;
 }
